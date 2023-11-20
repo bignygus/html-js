@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styl2.css">
+    <title>Wskaźnik jakości hasła</title>
+</head>
+
+<body>
+    <div class="baner">
+        <a href="index.html"><h1>Weryfikacja jakości hasła</h1></a>
+    </div>
+    <div class="lewy">
+        <h2>Wybierz opcję</h2>
+        <ul>
+            <li><a href="sprawdz.html">Sprawdź hasło</a></li>
+            <li><a href="reguly.html">Reguły tworzenia hasła</a></li>
+        </ul>
+    </div>
+    <div class="prawy">
+        <p>Wpisz hasło:</p>
+        <input type="text" id="haslo01">
+        <input type="submit" value="Weryfikuj" onclick="weryfikacja()"><br>
+        <span id="wynik"></span>
+
+    </div>
+    <div class="clr">&nbsp;</div>
+    <div class="stopka">
+        <h3>Wskaźnik jakości hasła</h3><br>
+        <p>Twórca strony: 348723758724</p>
+    </div>
+
+    <script>
+        const wynik = document.getElementById("wynik");
+        function manumer(pass) {
+            return /\d/.test(pass);
+        }
+        function weryfikacja(){
+          var pass = document.getElementById("haslo01").value;
+          if(pass.length >= 7 && manumer(pass)){
+            wynik.innerHTML = "HASŁO JEST DOBRE";
+            wynik.style.color = "green";
+          }else if(pass.length > 4 && manumer(pass)){
+            wynik.innerHTML = "HASŁO JEST ŚREDNIE";
+            wynik.style.color = "blue";
+          }else if(pass.length >= 1){
+            wynik.innerHTML = "HASŁO JEST SŁABE";
+            wynik.style.color = "yellow";
+          }else{
+            wynik.innerHTML = "HASŁO JEST PUSTE";
+            wynik.style.color = "red";
+          }
+          
+        }
+    </script>
+
+</body>
+</html>
